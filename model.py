@@ -19,3 +19,20 @@ pred = Predator()
 pred.predict()
 
 # UNDERSTAND HOW TO IMPLEMENT A MODEL WITH KERAS AND PYTORCH
+
+class Model(Sequential):
+    def __init__(self):
+        self.model = Sequential()
+        self.build()
+
+    def build(self):
+        self.model.add(Dense())
+        self.model.add(Dense())
+
+    def compiler(self):
+        self.model.compile(optimizer='adam', loss='mse')
+
+    def summarize(self):
+        self.model.summary()
+
+hmm = Model()

@@ -9,5 +9,5 @@ import scrapy
 class StuffItem(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
-    
+    score = scrapy.Field()
     pass
