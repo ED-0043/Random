@@ -5,6 +5,12 @@ name = "pypi"
 
 [packages]
 fastapi = "*"
+django = "*"
+keras = "*"
+pandas = "*"
+seaborn = "*"
+matplotlib = "*"
+torch  = "*"
 
 [dev-packages]
 
