@@ -1,5 +1,5 @@
-from keras.models import Sequential
-from keras.layers import Dense
+from keras.models import Sequential, Model
+from keras.layers import Dense, Input, concatenate
 # from keras.
 
 class Predator(Sequential):
@@ -36,3 +36,15 @@ class Model(Sequential):
         self.model.summary()
 
 hmm = Model()
+
+class Functionality(Model):
+    def __init__(self):
+        self.in1 = Input()
+        self.layerA1 = Dense(100, activation='relu', )(self.in1)
+        self.layerA2 = Dense(100, activation='relu', )(self.layerA1)
+        self.in2 = Input()
+        self.layerB1 = Dense(50, activation='relu', )(self.in2)
+        self.layerB2 = Dense(25, activation='relu', )(self.layerB1)
+        self.model = concatenate([self.layerA2, self.layerB2])
+    # cant tell what im supposed to do next, but will revisit this
+        
