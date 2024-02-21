@@ -17,3 +17,7 @@ def post_item():
     return {
         model.forward()
         }
+
+@app.post(path=Path(description="unkown destination"))
+def post_item():
+    return{model.forward}
