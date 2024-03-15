@@ -9,40 +9,18 @@ import pandas as pd
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-
 class SentimentAnalyser:
     """
     Sentiment Analyser
     ------------------
-    class used to perform some sentiment analysis on textual data, used in the  fileapi.py file for making 
-    a sentiment analysis API.
-    
-    Params
-    ------
-    arg 1():
-        ...
-    arg2 ():
-        ...
-        
-    Returns
-    -------
-        ...
+    class used to perform some sentiment analysis on textual data, used in the  fileapi.py
+    file for making a sentiment analysis API.
     """
-    lemmatizer = nltk.stem.WordNetLemmatizer()
-    model = MultinomialNB()
-    tfid = TfidfVectorizer()
-    CountVectorizer()
-    textatistic.Textatistic()
     
-    clean_data = [] # make this a global variable for the class
-    
-    def __init__(self, ):
-        
-        
-        pass
-    
-    @classmethod
-    def clean_data(self, pattern:str , path: str ,) -> list:
+    def __init__(self, data):
+        self.data = data 
+
+    def clean_data(self, pattern:str , data: list ,) -> list:
         """Cleans the data using regex pattern and returns a list
         
         Args:
@@ -59,15 +37,16 @@ class SentimentAnalyser:
         """
         clean_data = []
                 
-        os.chdir(path=path)
-        for x in os.listdir():
+        for x in self.data:
             words = x[0]
             words = re.sub(pattern, "", string=words)
+            clean_data.append(words)
         
-        return clean_data.append(words)
+        return clean_data
     
-    def readablility_score(self, data: list):
-        """applies the textatistcs smog and flesch readability tests
+    
+    def flesch_score(self, average=bool) -> int:
+        """applies the textatistcs flesch readability test
         
         Parameters
         ----------
@@ -76,30 +55,36 @@ class SentimentAnalyser:
             
         Returns
         -------
-        tuple containing the two readability test scores  
+        integer of the the flesch readability score 
         
         this is the numpy documentation format
         """
-        for x in data:
-            smog = self.text_score.smog_score(x)
-            flesch = self.text_score.flesch_score(x)
-            
-            avg_smog = np.avg(smog)
-            avg_flesch = np.avg(flesch)
-            
-        return ({"smog_score": avg_smog}, {"flesch_score": avg_flesch}) #FIXME
-        pass
+        scores = []
+        for x in self.data:
+            scores.append(textatistic.flesch_score(x))
+        if average == True:
+            return sum(scores)/ len(scores)
+        else:
+            return scores
+
     
-    def dataframer(self, ) -> pd.Dataframe:
+    def smog_score(self, data: list) -> int:
+        """applies the textatistcs smog readability test
+        
+        Parameters
+        ----------
+        data: list 
+            a list of strings to best tested with said scores 
+            
+        Returns
+        -------
+        int containing the smog score  
+        
+        this is the numpy documentation format
+        """
         pass
         
-    def preprocess_text():
         pass
     
     def return_predictions():
-        
         pass
-    
-    def new_function(self):
-        
-        return
