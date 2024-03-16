@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 class SentimentAnalyser:
@@ -17,8 +18,11 @@ class SentimentAnalyser:
     file for making a sentiment analysis API.
     """
     
-    def __init__(self, data):
+    def __init__(self, data, y: str):
         self.data = data 
+        self.x = pd.DataFrame(data).drop(y).values
+        self.y = pd.DataFrame(data[y])
+        self.model = MultinomialNB(alpha=0.1).fit(self.x, self.y)
 
     def clean_data(self, pattern:str , data: list ,) -> list:
         """Cleans the data using regex pattern and returns a list
@@ -60,7 +64,7 @@ class SentimentAnalyser:
         this is the numpy documentation format
         """
         scores = []
-        for x in self.data:
+        for x in self.data[0]:
             scores.append(textatistic.flesch_score(x))
         if average == True:
             return sum(scores)/ len(scores)
@@ -84,7 +88,18 @@ class SentimentAnalyser:
         """
         pass
         
-        pass
     
-    def return_predictions():
-        pass
+    def return_predictions(self, test: int|list) -> int|list:
+        """returns model prediction values
+
+        Parameters
+        ----------
+        test (int | list):
+            values on which the model would use to perform predictions
+
+        Returns
+        -------
+            integars or list of predicted values
+        """
+        predictions = self.model.predict(test)
+        return predictions
