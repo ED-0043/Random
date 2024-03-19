@@ -18,6 +18,7 @@ class SentimentAnalyser:
     file for making a sentiment analysis API.
     """
     
+    word = 90
     def __init__(self, data, y: str):
         self.data = data 
         self.x = pd.DataFrame(data).drop(y).values
