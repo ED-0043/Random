@@ -8,3 +8,9 @@
 /image_processing/circles/
 /image_processing/squares/
 /image_processing/triangles/
+images_train.csv*
+
+
+# Added by cargo
+
+/target
