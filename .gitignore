@@ -1,0 +1,5 @@
+# files and directories to be left out of the repository
+ 
+#ignored files
+*.csv
+Pipfile.lock
