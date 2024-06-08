@@ -3,3 +3,4 @@
 #ignored files
 *.csv
 Pipfile.lock
+readme.MD
