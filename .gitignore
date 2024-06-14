@@ -1,6 +1,7 @@
 # files and directories to be left out of the repository
- 
+*__pycache__/
 #ignored files
 *.csv
 Pipfile.lock
-readme.MD
+*.md
+*.joblib

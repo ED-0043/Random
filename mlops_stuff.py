@@ -1,7 +1,6 @@
 # performing unittest
 import unittest
 import pandas as pd
-
 from random import shuffle
 from sklearn.linear_model import LinearRegression
 
@@ -30,10 +29,11 @@ class NewTest(unittest.TestCase):
 # using feast to store features
 from feast import Field, Entity, ValueType, FeatureStore
 from feast.data_source import FileSource
+from feast.feature_view import FeatureView
 
 patient = Entity(name='patient', join_keys=['patient_id'])
-chol = Field(name='chol', dtype=Float32)
-age = Field(name='age', dtype=Int32)
+chol = Field(name='chol', dtype=ValueType.FLOAT)
+age = Field(name='age', dtype=ValueType.INT32)
 
 data_source = FileSource(path="/path to csv",
                          event_timestamp_column='event_timestamp',
