@@ -10,4 +10,5 @@ jobs:
       - name: run hello world
         run: |
           echo hello world
+          echo ${{github.ScretOne}}
     
